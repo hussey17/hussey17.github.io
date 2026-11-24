@@ -239,6 +239,8 @@ h3.item-title { text-transform: none; letter-spacing: 0; color: var(--text); }
 .teach-list li:last-child { margin-bottom: 0; }
 .teach-list li::marker { color: var(--accent); }
 .teach-course { font-weight: 600; }
+.mentor-intro { margin-top: 18px; }
+.teach-desc { margin: 4px 0 0; }
 
 /* ---------- Footer ---------- */
 .footer-inner {
