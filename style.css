@@ -1,0 +1,289 @@
+/* ==========================================================
+   Hassaan Tayyab · personal site
+   Plain CSS, no build step. Edit the tokens below to restyle.
+   ========================================================== */
+
+:root {
+  --content: 665px;          /* main column width */
+  --accent: #0b6b63;         /* links: deep teal (change here to recolour the site) */
+  --accent-hover: #084f49;
+  --text: #242424;
+  --muted: #4b5563;
+  --meta: #525963;
+  --rule: #d8d8d8;
+  --bg: #ffffff;
+  --status-bg: #e6f2f0;
+
+  /* Research-interest colours: used for the interest bullets and the paper tags */
+  --css-fg: #1f4e8c;   --css-bg: #e9f0fa;   /* Computational Social Science */
+  --hcai-fg: #5b3696;  --hcai-bg: #f2ecfa;  /* Human-Centred and Explainable AI */
+  --ai4se-fg: #8a4b00; --ai4se-bg: #fcf1e1; /* AI for Software Engineering */
+  --ese-fg: #9b2335;   --ese-bg: #fbeaed;   /* Empirical Software Engineering */
+
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.5 var(--sans);
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover, a:focus-visible { color: var(--accent-hover); text-decoration: underline; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+/* Collaborator names linked to their profiles */
+a.person {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+/* Institutions linked to their departments */
+a.inst { font-weight: 600; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--bg); padding: 8px 12px;
+}
+.skip-link:focus { left: 16px; top: 8px; z-index: 10; }
+
+.wrap {
+  max-width: calc(var(--content) + 32px);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ---------- Header ---------- */
+.header-inner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 14px 0 9px;
+  border-bottom: 1px solid var(--rule);
+}
+.site-name {
+  font: bold 19px/1.2 var(--serif);
+  color: var(--text);
+  margin: 0;
+}
+.site-name a { color: inherit; }
+.site-name a:hover { text-decoration: none; }
+.site-nav ul {
+  display: flex; flex-wrap: wrap; gap: 4px 18px;
+  list-style: none; margin: 0; padding: 0;
+  font-size: 13.5px;
+}
+
+/* ---------- Sections ---------- */
+main section {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 12px;
+}
+main section:last-child { border-bottom: 0; }
+
+h2 {
+  font: bold 19px/1.3 var(--serif);
+  margin: 0 0 10px;
+}
+h3 {
+  font: bold 12.5px/1.3 var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 22px 0 10px;
+}
+h3:first-of-type { margin-top: 2px; }
+
+p { margin: 0 0 8px; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- About ---------- */
+.about {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+.portrait {
+  width: 116px; height: 116px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  background: var(--status-bg);
+}
+.profile-links {
+  display: flex; flex-wrap: wrap; gap: 4px 0;
+  list-style: none; margin: 10px 0 0; padding: 0;
+}
+.profile-links li:not(:last-child)::after {
+  content: "·";
+  color: var(--meta);
+  margin: 0 9px;
+}
+
+/* ---------- Snapshot (Interests | Education) ---------- */
+.snapshot {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 58px;
+}
+.interest-list { list-style: disc; margin: 0; padding-left: 1.2em; }
+.interest-list li { margin-bottom: 3px; padding-left: 2px; }
+.edu p { margin-bottom: 3px; }
+.meta { font-size: 12.5px; color: var(--meta); line-height: 1.5; }
+
+/* Colour key: bullet colour = tag colour */
+.interest-list .i-css::marker   { color: var(--css-fg); }
+.interest-list .i-hcai::marker  { color: var(--hcai-fg); }
+.interest-list .i-ai4se::marker { color: var(--ai4se-fg); }
+.interest-list .i-ese::marker   { color: var(--ese-fg); }
+
+/* ---------- News ---------- */
+.news { list-style: none; margin: 0; padding: 0; }
+.news li {
+  display: grid;
+  grid-template-columns: 73px 1fr;
+  gap: 0 10px;
+  margin-bottom: 5px;
+  font-size: 13.5px;
+}
+.news-date { color: var(--meta); white-space: nowrap; }
+
+/* ---------- Research items ---------- */
+.item { margin-bottom: 18px; }
+.item:last-child { margin-bottom: 0; }
+.item-title {
+  font: bold 15.5px/1.35 var(--serif);
+  margin: 0 0 3px;
+}
+.authors { font-size: 13.5px; margin: 0 0 4px; }
+.authors .me { font-weight: 700; }
+.item .meta { margin: 0; }
+.item .venue { font-weight: 600; }
+
+/* Research-area tags (rounded, colour-coded per interest) */
+.tags {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  list-style: none; margin: 0 0 5px; padding: 0;
+}
+.tags li {
+  font-size: 11.5px; font-weight: 500;
+  padding: 1px 9px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  line-height: 1.6;
+}
+.tags .i-css   { color: var(--css-fg);   background: var(--css-bg); }
+.tags .i-hcai  { color: var(--hcai-fg);  background: var(--hcai-bg); }
+.tags .i-ai4se { color: var(--ai4se-fg); background: var(--ai4se-bg); }
+.tags .i-ese   { color: var(--ese-fg);   background: var(--ese-bg); }
+.tags li { border-color: color-mix(in srgb, currentColor 30%, transparent); }
+
+.item-links {
+  display: flex; flex-wrap: wrap; gap: 2px 14px;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+details { margin-top: 3px; font-size: 13.5px; }
+summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 13px;
+  list-style: none;
+  display: inline-block;
+}
+summary::-webkit-details-marker { display: none; }
+summary::before { content: "+ "; }
+details[open] summary::before { content: "− "; }
+details > p { margin-top: 5px; color: var(--muted); }
+details > ul { margin: 6px 0 0; padding-left: 1.2em; color: var(--muted); }
+details > ul li { margin-bottom: 6px; padding-left: 2px; }
+details > ul li:last-child { margin-bottom: 0; }
+details > ul li strong { color: var(--text); font-weight: 600; }
+
+/* ---------- Projects page ---------- */
+h3.item-title { text-transform: none; letter-spacing: 0; color: var(--text); }
+.feature-list { margin: 5px 0 0; padding-left: 1.2em; font-size: 13.5px; color: var(--muted); }
+.feature-list li { margin-bottom: 3px; padding-left: 2px; }
+.site-nav a[aria-current="page"] { color: var(--text); font-weight: 600; }
+
+/* ---------- Work experience ---------- */
+.experience { list-style: none; margin: 0; padding: 0; }
+.experience li {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0 10px;
+  margin-bottom: 6px;
+  font-size: 13.5px;
+}
+.exp-date { color: var(--meta); white-space: nowrap; }
+
+/* ---------- Teaching ---------- */
+.teach-intro { margin-bottom: 8px; }
+.teach-list { list-style: disc; margin: 0; padding-left: 1.2em; }
+.teach-list li { margin-bottom: 7px; padding-left: 2px; }
+.teach-list li:last-child { margin-bottom: 0; }
+.teach-list li::marker { color: var(--accent); }
+.teach-course { font-weight: 600; }
+
+/* ---------- Footer ---------- */
+.footer-inner {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  padding: 14px 0 28px;
+  border-top: 1px solid var(--rule);
+  font-size: 12.5px; color: var(--meta);
+}
+
+/* ---------- Wide screens (laptops and monitors) ----------
+   Wider column with slightly larger type, so lines stay readable. */
+@media (min-width: 1100px) {
+  :root { --content: 860px; }
+  body { font-size: 15px; }
+  .site-name { font-size: 20px; }
+  .site-nav ul { font-size: 14.5px; gap: 4px 20px; }
+  h2 { font-size: 20.5px; }
+  h3 { font-size: 13px; }
+  .about { grid-template-columns: 128px 1fr; gap: 26px; }
+  .portrait { width: 128px; height: 128px; }
+  .meta { font-size: 13.5px; }
+  .item-title { font-size: 16.5px; }
+  .authors { font-size: 14.5px; }
+  .tags li { font-size: 12px; }
+  .item-links { font-size: 14px; }
+  details { font-size: 14.5px; }
+  summary { font-size: 14px; }
+  .news li { grid-template-columns: 80px 1fr; font-size: 14.5px; }
+  .experience li { grid-template-columns: 150px 1fr; font-size: 14.5px; }
+  .feature-list { font-size: 14.5px; }
+  .footer-inner { font-size: 13.5px; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .header-inner { flex-direction: column; gap: 6px; }
+  .about { grid-template-columns: 1fr; gap: 14px; }
+  .snapshot { grid-template-columns: 1fr; gap: 22px; }
+  .news li { grid-template-columns: 1fr; }
+  .news-date { font-size: 12px; }
+  .experience li { grid-template-columns: 1fr; }
+  .exp-date { font-size: 12px; }
+}
+
+@media print {
+  .site-nav, .skip-link, .site-footer a { display: none; }
+  details > p, details > ul { display: block; }
+}
